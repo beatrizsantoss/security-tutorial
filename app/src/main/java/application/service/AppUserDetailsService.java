@@ -11,23 +11,21 @@ import application.repository.UserRepository;
 
 @Service
 public class AppUserDetailsService implements UserDetailsService {
-
     @Autowired
     private UserRepository userRepo;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepo.findByUsername(username);
+        User user = userRepository.findByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException("Usuário Não Encontrado");
         }
-        UserDetails userDetails =
-            org.springframework.security.core.userdetails.User.builder()
-                .username(user.getUsername())
+        UserDetails userDetails = 
+            org.springframework.security.core.userdetails.User.withUsername(user.getUsername())
                 .password(user.getPassword())
                 .roles("USER")
                 .build();
 
-        return userDetails;
+        return userDetails; 
     }
 }
