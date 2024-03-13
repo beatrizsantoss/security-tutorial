@@ -17,16 +17,17 @@ public class AppUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepo.findByUsername(username);
-        if (user == null) {
+        if(user == null){
             throw new UsernameNotFoundException("Usuário Não Encontrado");
         }
-        UserDetails userDetails = 
-            org.springframework.security.core.userdetails.User.builder() 
-                .username(user.getUsername())
-                .password(user.getPassword())
-                .roles("USER")
-                .build();
-
-        return userDetails; 
+        UserDetails userDetails =
+                org.springframework.security.core.userdetails.User.builder()
+                        .username(user.getUsername())
+                        .password(user.getPassword())
+                        .roles("USER")
+                        .build();
+    
+        return userDetails;
     }
 }
+
