@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistenco.Entity;
 import jakarta.persistenco.Id;
 import jakarta.persistenco.Table;
+import jakarta.persistenco.GeneratedValue;
 
 @Entity
 @Table (name = "generos")
