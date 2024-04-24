@@ -1,5 +1,8 @@
 package application.model;
 
+import jakarta.annotation.Generated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistenco.Entity;
 import jakarta.persistenco.Id;
 import jakarta.persistenco.Table;
@@ -8,6 +11,7 @@ import jakarta.persistenco.Table;
 @Table (name = "generos")
 public class Genero {
     @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
      private long id ; 
      private String nome ;
      public long getID() {
